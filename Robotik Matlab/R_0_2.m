@@ -1,0 +1,32 @@
+x_winkel_1=10;
+y_winkel_1=20;
+z_winkel_1=30;
+Rx_1=[1 0 0; 0 cosd(x_winkel_1) -sind(x_winkel_1); 0 sind(x_winkel_1) cosd(x_winkel_1)];
+Ry_1=[cosd(y_winkel_1) 0 sind(y_winkel_1); 0 1 0; -sind(y_winkel_1) 0 cosd(y_winkel_1)];
+Rz_1=[cosd(z_winkel_1) -sind(z_winkel_1) 0 ; sind(z_winkel_1) cosd(z_winkel_1) 0; 0 0 1];
+R_1 = Rx_1*Ry_1*Rz_1
+theta_1 = acosd((R_1(1,1)+R_1(2,2)+R_1(3,3)-1)/2)
+k_x_1=(R_1(3,2)-R_1(2,3))/2*sind(theta_1);
+k_y_1=(R_1(1,3)-R_1(3,1))/2*sind(theta_1);
+k_z_1=(R_1(2,1)-R_1(1,2))/2*sind(theta_1);
+Q_1=[cosd(theta_1/2) k_x_1*sind(theta_1/2) k_y_1*sind(theta_1/2) k_z_1*sind(theta_1/2)];
+
+x_winkel_2=10;
+y_winkel_2=20;
+z_winkel_2=30;
+Rx_2=[1 0 0; 0 cosd(x_winkel_2) -sind(x_winkel_2); 0 sind(x_winkel_2) cosd(x_winkel_2)];
+Ry_2=[cosd(y_winkel_2) 0 sind(y_winkel_2); 0 1 0; -sind(y_winkel_2) 0 cosd(y_winkel_2)];
+Rz_2=[cosd(z_winkel_2) -sind(z_winkel_2) 0 ; sind(z_winkel_2) cosd(z_winkel_2) 0; 0 0 1];
+R_2 = Rz_2*Ry_2*Rx_2
+theta_2 = acosd((R_2(1,1)+R_2(2,2)+R_2(3,3)-1)/2)
+k_x_2=(R_2(3,2)-R_2(2,3))/2*sind(theta_2);
+k_y_2=(R_2(1,3)-R_2(3,1))/2*sind(theta_2);
+k_z_2=(R_2(2,1)-R_2(1,2))/2*sind(theta_2);
+Q_2=[cosd(theta_2/2) k_x_2*sind(theta_2/2) k_y_2*sind(theta_2/2) k_z_2*sind(theta_2/2)];
+
+R=R_1*R_2
+theta = acosd((R(1,1)+R(2,2)+R(3,3)-1)/2)
+k_x=(R(3,2)-R(2,3))/2*sind(theta);
+k_y=(R(1,3)-R(3,1))/2*sind(theta);
+k_z=(R(2,1)-R(1,2))/2*sind(theta);
+Q=[cosd(theta/2) k_x*sind(theta/2) k_y*sind(theta/2) k_z*sind(theta/2)];
